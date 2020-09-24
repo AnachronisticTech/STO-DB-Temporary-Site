@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+        <title>Starfleet Security Database</title>
+
+        <!--<base href="/">-->
+        <script type="text/javascript" src="/scripts/jquery.js"></script>
+        <script type="text/javascript" src="/scripts/webviewinfo.js"></script>
+        <script type="text/javascript" src="/scripts/arrive.js"></script>
+        <script type="text/javascript" src="/scripts/lcarssdk.js"></script>
+        <script type="text/javascript" src="/addons/scrollbutton/scrollbutton.js"></script>
+        <script type="text/javascript" src="/addons/levelbar/levelbar.js"></script>
+        <script type="text/javascript" src="/templates/bracket/bracket-alt.js"></script>
+        <script type="text/javascript" src="/templates/dialog/dialog.js"></script>
+        <script type="text/javascript" src="/templates/framing/framing.js"></script>
+        <script type="text/javascript" src="/templates/button/button.js"></script>
+
+        <script type="text/javascript" src="/scripts/page.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="/styles/css/lcarssdk.css">
+        <link rel="stylesheet" type="text/css" href="/addons/scrollbutton/scrollbutton.css">
+        <link rel="stylesheet" type="text/css" href="/addons/levelbar/levelbar.css">
+        <link rel="stylesheet" type="text/css" href="/templates/bracket/bracket.css">
+        <link rel="stylesheet" type="text/css" href="/templates/dialog/dialog.css">
+        <link rel="stylesheet" type="text/css" href="/templates/framing/framing.css">
+        <link rel="stylesheet" type="text/css" href="/templates/button/button.css">
+        <link rel="stylesheet" type="text/css" href="/styles/themes/theme_ussNotAffiliated.css">
+
+        <link rel="stylesheet" type="text/css" href="/styles/css/module.css"></head>
+        <style>
+            .textField {
+                font-size:24px;
+                text-transform:none;
+                border:#d1ba6c solid !important;
+                border-width:2px 7px !important;
+                margin-left:10px !important;
+                padding:5px !important;
+                width:200px;
+                -webkit-user-select: text !important;
+                -moz-user-select: text !important;
+            }
+            .textFieldSmall {
+                font-size:24px;
+                text-transform:none;
+                border:#d1ba6c solid !important;
+                border-width:2px 7px !important;
+                margin-left:10px !important;
+                padding:5px !important;
+                width:50px;
+                -webkit-user-select: text !important;
+                -moz-user-select: text !important;
+            }
+            .selectField {
+                font-size:24px;
+                text-transform:capitalize;
+                border:#d1ba6c solid !important;
+                border-width:2px 7px !important;
+                margin-left:10px !important;
+                background:#000 !important;
+                color:#fff !important;
+                font-family:LCARS;
+                letter-spacing:0.1pt;
+            }
+            label {
+                letter-spacing:0.1pt;
+            }
+            .submit {
+                font-size:24px !important;
+                width:165px !important;
+                height:60px !important;
+                border-radius:30px !important;
+                background:#d1ba6c !important;
+                color: #000 !important;
+                margin-left:auto !important;
+                margin-right:auto !important;
+            }
+            .submitAlt {
+                font-size:20px !important;
+                width:165px !important;
+                height:60px !important;
+                border-radius:30px 0px 0px 30px !important;
+                background:#d1ba6c !important;
+                color: #000 !important;
+                margin-left:5px !important;
+                padding-left: 110px;
+                padding-top: 25px;
+            }
+            .image h1 {
+                opacity:0;
+                position:absolute;
+                bottom:-10px;
+                left:0px;
+                height:140px;
+                padding-right:30px;
+                padding-left:10px;
+                padding-top:20px;
+                border-radius:0px 30px 0px 0px;
+                background:rgba(0,0,0,0.6);
+                transition:1s;
+            }
+            .image:hover h1 {
+                opacity:1;
+            }
+            .image h3 {
+                opacity:0;
+                position:absolute;
+                bottom:5px;
+                left:10px;
+                transition:1s;
+            }
+            .image:hover h3 {
+                opacity:1;
+            }
+        </style>
+
+    </head>
+
+    <body ontouchstart="" onload=""></body>
+    <script>
+        //Media
+        error = {
+            type:'content',
+            children:[
+                {type:'htmlTag', tag:'div', flexC:'h', style:'padding-right:10px;', children:[
+                    {type:'dialog', template:LCARS.templates.sdk.dialog.typeT, style:'width:50%; margin-left:25%; margin-right:25%; margin-top:15%;', content:[
+                        {type:'row', flex:'h', flexC:'h', style:'min-height:0px; margin-bottom:8px;', children:[
+                            {type:'htmlTag', tag:'h1', color:'text-voy-yellow-1', text:'Service down for maintenance'},
+                        ]},
+                        {type:'row', flex:'h', flexC:'h', style:'min-height:0px; margin-bottom:18px;', children:[
+                            {type:'htmlTag', tag:'p', color:'text-voy-grey-1', text:'The service is currently being rebuilt. Your data may or may not be preserved. Apologies for any inconvenience.'},
+                        ]},
+                        {type:'row', flex:'h', flexC:'h', style:'min-height:0px; margin-bottom:8px;', children:[
+                            {type:'button', label:'To homepage', flexC:'h', style:'max-width:165px; margin-left:auto; margin-right:auto;', color:'bg-voy-yellow-1', click:function(){
+                                window.location.href = 'https://anachronistic-tech.co.uk';
+                            }},
+                        ]},
+                    ]},
+                ]},
+            ]
+        }
+        visualGuide.visualGroups.error = error;
+
+        //This is the UI
+        visualGuide.uiViewport = {
+        type:'wrapper',
+        style:'/*margin-left:10%; margin-right:10%;*/ height:100%;',
+        flex:'v',
+        version:'column',
+        children:[
+            //Header
+            {type:'row', version:'header', flex:'h', children:[{type:'cap', version:'left', color:'bg-voy-grey-1'}, {type:'title', text:'Starfleet Security Database'}, {type:'bar', flexC:'h', color:'bg-voy-grey-1'}, {type:'cap', version:'right', color:'bg-voy-grey-1'}]},
+
+            //Scroll Content Area
+            {type:'row', version:'header', style:'margin-left:60px; margin-right:60px; width:calc(100% - 120px); min-width:0px; padding-left:5px; padding-right:5px; height:100%;', flex:'h', children:[
+                {type:'content', flexC:'v', style:'height:100%', id:'viewport-content'},
+                {type:'htmlTag',tag:'div', id:'ui-controls', style:'max-width:335px; min-width:0px; padding-top:15px; padding-bottom:15px; height:100%; overflow:hidden;', children:[
+                ]},
+            ]},
+
+            //Footer
+            {type:'row', version:'header', flex:'h', style:'margin-bottom:0px;', children:[
+                {type:'cap', version:'left', color:'bg-voy-grey-1'},
+                {type:'bar', flexC:'h', color:'bg-voy-grey-1'},
+                {type:'cap', version:'right', color:'bg-voy-grey-1'}
+            ]}
+
+        ]
+    }
+
+    $(document).on('ready', function(){
+        $(visualGuide.uiViewport).createObject({appendTo:'body', success:function(){
+            //Shows this section on load.
+            visualGuide.events.generateVisualGroups('error');
+        }});
+    });
+
+    </script>
+</html>
